@@ -1,6 +1,14 @@
-<h3>Title: <%= @posts.title %></h3>
+<p>
+  <%= render @posts.categories %>
+</p>
 
-<p><%= @posts.description %></p>
-<p><%= link_to "Source", @posts.url %></p>
+<%= render "shared/content_title", title: @posts.title%>
+
+<div class="row">
+  <div class="span8 well">
+    <p><%= @posts.description %></p>
+  </div>
+</div>
+<small>Posted by: <%= @posts.creator.username %> at <%= @posts.created_at %></small>
 
 <p><%= link_to "Index", posts_path %></p>

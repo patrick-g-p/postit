@@ -1,8 +1,15 @@
-<h3>Index</h3>
+<%= render "shared/content_title", title: "All Posts"%>
 
-<ol>
 <% @posts.each do |post| %>
-  <li><%= post.title %></li>
-  <p><%= post.description %> | <%= link_to "Source", post.url %></p>
+<div class="row">
+  <div class="span8 well">
+    <%= render post.categories %>
+    <h3><%= link_to post.title, post.url %></h3>
+    <p><%= post.description %></p>
+    <p>
+      <small>Posted by: <%= post.creator.username %> at <%= post.created_at %></small>
+    </p>
+    <small><%= link_to("#{post.comments.size} comments", post_path(post)) %></small>
+  </div>
+</div>
 <% end %>
-</ol>
