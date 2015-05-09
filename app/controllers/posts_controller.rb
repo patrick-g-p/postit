@@ -16,11 +16,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
-    if @post.save?
+    if @post.save
       flash[:notice] = "Post was submitted."
       redirect_to @post
     else
-      @post.errors.full_messages
       render :new
     end
   end
@@ -41,7 +40,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    post.require(:post).permit(:title, :url, :description)
+    params.require(:post).permit(:title, :url, :description)
   end
 
   def set_post
