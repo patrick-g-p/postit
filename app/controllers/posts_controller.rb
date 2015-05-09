@@ -1,13 +1,11 @@
 class PostsController < ApplicationController
-  before_filter :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update] #:destroy not included for now.
 
   def index
-    @posts = Post.all
+    @posts = Post.find(:all, order: 'created_at DESC')
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
     @post = Post.new
@@ -15,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.creator = User.first #Change once you get to authentication
 
     if @post.save
       flash[:notice] = "Post was submitted."
@@ -24,18 +23,22 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
     if @post.update(post_params)
       flash[:notice] = "Post was updated."
-      redirect_to @post
+      redirect_to post_path(@post)
     else
       render :edit
     end
   end
+
+  # def destroy
+  #   @post.delete
+  #
+  #   redirect_to post_path
+  # end
 
   private
 

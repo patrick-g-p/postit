@@ -7,7 +7,7 @@
     <h3><%= link_to post.title, post.url %></h3>
     <p><%= post.description %></p>
     <p>
-      <small>Posted by: <%= post.creator %> at <%= post.created_at %></small>
+      <small>Posted by: <%= post.creator.username %> at <%= post.created_at %></small>
     </p>
     <small><%= link_to("#{post.comments.size} comments", post_path(post)) %></small>
   </div>

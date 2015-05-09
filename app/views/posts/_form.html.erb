@@ -10,13 +10,18 @@
 
 <div class="well">
   <%= form_for @post do |f|%>
+  <div class="control-group">
     <%= f.label :title, "Enter a title for your post" %>
     <%= f.text_field :title %>
+  </div>
+  <div class="control-group">
     <%= f.label :url, "Enter the URL" %>
     <%= f.text_field :url %>
+  </div>
+  <div class="control-group">
     <%= f.label :url, "Type a description" %>
-    <%= f.text_field :description %>
-    <br />
-    <%= f.submit "Create Post", class: "btn btn-success" %>
+    <%= f.text_area :description, rows: 5 %>
+  </div>
+  <%= f.submit "Create Post", class: "btn btn-success" %>
   <% end %>
 </div>
