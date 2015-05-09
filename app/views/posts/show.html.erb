@@ -1,15 +1,15 @@
 <p>
-  <%= render @posts.categories %>
+  <%= render @post.categories %>
 </p>
 
-<%= render "shared/content_title", title: @posts.title%>
+<%= render "shared/content_title", title: @post.title%>
 
 <div class="row">
   <div class="span8 well">
-    <p><%= @posts.description %></p>
+    <p><%= @post.description %></p>
   </div>
 </div>
-<small>Posted by: <%= @posts.creator.username %> at <%= @posts.created_at %></small>
+<small>Posted by: <%= @post.creator.username %> at <%= @post.created_at %></small>
 
 <hr />
 <p><%= link_to "Index", posts_path %></p>
