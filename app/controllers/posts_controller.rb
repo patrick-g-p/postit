@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update] #:destroy not included for now.
 
   def index
-    @posts = Post.find(:all, order: 'created_at DESC')
+    @posts = Post.all
   end
 
   def show; end
