@@ -1,13 +1,7 @@
 <%= render 'shared/content_title', title: "Create a new category"%>
 
 <% if @category.errors.any? %>
-<div class="alert-danger">
-  <% @category.errors.full_messages.each do |message| %>
-    <ul>
-      <li><%= message %></li>
-    </ul>
-  <% end %>
-</div>
+  <%= render 'shared/error_message', object: @category %>
 <% end %>
 
 <div class="well">
@@ -15,6 +9,7 @@
   <div class="control-group">
     <%= f.label :name, "Enter the name of the new category" %>
     <%= f.text_field :name %>
-    <%= f.submit "Create Category", class: "btn btn-success" %>
+  </div>
+  <%= f.submit "Create Category", class: "btn btn-success" %>
   <% end %>
 </div>

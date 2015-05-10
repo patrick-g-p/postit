@@ -1,11 +1,5 @@
 <% if @post.errors.any? %>
-<div class="alert-danger">
-  <% @post.errors.full_messages.each do |message| %>
-    <ul>
-      <li><%= message %></li>
-    </ul>
-  <% end %>
-</div>
+<%= render 'shared/error_message', object: @post %>
 <% end %>
 
 <div class="well">
