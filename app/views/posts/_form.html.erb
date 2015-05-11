@@ -16,6 +16,11 @@
     <%= f.label :url, "Type a description" %>
     <%= f.text_area :description, rows: 5 %>
   </div>
+  <div class="control-group">
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |box| %>
+      <%= box.label(class:"checkbox inline") {box.check_box(class:"checkbox") + box.text} %>
+    <% end %>
+  </div>
   <%= f.submit "Create Post", class: "btn btn-success" %>
   <% end %>
 </div>
