@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def date_format_fixer(date)
-    date.strftime(format="%m/%d/%Y at %l:%M%P %Z")
+    date.strftime(format="on %m/%d/%Y at %l:%M%P %Z")
   end
 end

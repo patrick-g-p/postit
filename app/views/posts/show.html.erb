@@ -34,7 +34,7 @@
 <% @post.comments.each do |comment| %>
   <div class="well">
     <p><%= "'#{comment.body}'" %></p>
-    <p> Posted by: <%= link_to "#{comment.creator.username}", "#" %> <small> <%= "at #{date_format_fixer(comment.created_at)}" %> </small> </p>
+    <p> Posted by: <%= link_to "#{comment.creator.username}", "#" %> <small> <%= "#{date_format_fixer(comment.created_at)}" %> </small> </p>
   </div>
 <% end %>
 
