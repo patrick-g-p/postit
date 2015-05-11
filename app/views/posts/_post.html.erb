@@ -6,6 +6,6 @@
     <p>
       <small>Posted by: <%= post.creator.username %> at <%= post.created_at %></small>
     </p>
-    <small><%= link_to("#{post.comments.size} comments", post_path(post)) %></small>
+    <small><%= link_to("Comments: #{post.comments.size}", post_path(post)) %></small>
   </div>
 </div>

@@ -11,9 +11,34 @@
 <div class="row">
   <div class="span8 well">
     <p><%= @post.description %></p>
+    <small>Posted by: <%= @post.creator.username %> at <%= @post.created_at %></small>
   </div>
 </div>
-<small>Posted by: <%= @post.creator.username %> at <%= @post.created_at %></small>
+
+<div class="well">
+  <% if @comment.errors.any? %>
+    <%= render "shared/error_message", object: @comment %>
+  <% end %>
+
+  <%= form_for [@post, @comment] do |f|%>
+  <div class="control-group">
+    <%= f.label :body, "Leave a comment" %>
+    <%= f.text_area :body, rows: 3 %>
+  </div>
+  <%= f.submit "Create Comment", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
+<hr />
+<h4>Comments:</h4>
+
+<% @post.comments.each do |comment| %>
+  <div class="well">
+    <p><%= "'#{comment.body}'" %></p>
+    <p> Posted by: <%= link_to "#{comment.creator.username}", "#" %> <small> <%= "at #{comment.created_at}" %> </small> </p> 
+  </div>
+<% end %>
 
 <hr />
 <p><%= link_to "Index", posts_path %></p>

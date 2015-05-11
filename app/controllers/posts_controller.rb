@@ -5,7 +5,9 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+  end
 
   def new
     @post = Post.new
@@ -17,9 +19,9 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = "Post was submitted."
-      redirect_to @post
+      redirect_to post_path(@post)
     else
-      render :new
+      render "new"
     end
   end
 
@@ -30,7 +32,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Post was updated."
       redirect_to post_path(@post)
     else
-      render :edit
+      render "edit"
     end
   end
 
