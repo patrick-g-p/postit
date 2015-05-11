@@ -1,10 +1,10 @@
 <div class="row">
   <div class="span8 well">
     <%= render post.categories %>
-    <h3><%= link_to post.title, post.url %></h3>
+    <h3><%= link_to post.title, url_fixer(post.url) %></h3>
     <p><%= post.description %></p>
     <p>
-      <small>Posted by: <%= link_to post.creator.username, "#" %> at <%= post.created_at %></small>
+      <small>Posted by: <%= link_to post.creator.username, "#" %> on <%= date_format_fixer(post.created_at) %></small>
     </p>
     <small><%= link_to("Comments: #{post.comments.size}", post_path(post)) %></small>
   </div>

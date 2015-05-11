@@ -6,13 +6,11 @@
   <%= render @post.categories %>
 </p>
 
-<%= render "shared/content_title", title: @post.title%>
+<h2> <%= link_to @post.title, @post.url %> </h2>
 
-<div class="row">
-  <div class="span8 well">
+<div class="well">
     <p><%= @post.description %></p>
     <small>Posted by: <%= @post.creator.username %> at <%= @post.created_at %></small>
-  </div>
 </div>
 
 <div class="well">
@@ -29,14 +27,14 @@
   <% end %>
 </div>
 
-
 <hr />
+
 <h4>Comments:</h4>
 
 <% @post.comments.each do |comment| %>
   <div class="well">
     <p><%= "'#{comment.body}'" %></p>
-    <p> Posted by: <%= link_to "#{comment.creator.username}", "#" %> <small> <%= "at #{comment.created_at}" %> </small> </p> 
+    <p> Posted by: <%= link_to "#{comment.creator.username}", "#" %> <small> <%= "at #{date_format_fixer(comment.created_at)}" %> </small> </p>
   </div>
 <% end %>
 
