@@ -1,20 +1,2 @@
 <%= render 'shared/content_title', title: "Register for a PostIt Account" %>
-
-<% if @user.errors.any? %>
-<%= render 'shared/error_message', object: @user %>
-<% end %>
-
-<div class="well">
-  <%= form_for @user do |f|%>
-  <div class="control-group">
-    <%= f.label :username, "Enter a username" %>
-    <%= f.text_field :username %>
-  </div>
-  <div class="control-group">
-    <%= f.label :password, "Create a password (7 character minimum)" %>
-    <%= f.password_field :password %>
-  </div>
-  </div>
-  <%= f.submit "Register Account" , class: "btn btn-success" %>
-  <% end %>
-</div>
+<%= render 'form' %>

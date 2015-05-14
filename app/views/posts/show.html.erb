@@ -1,4 +1,4 @@
-<% if logged_in? && current_user.id == @post.user_id %>
+<% if current_user.id == @post.user_id %>
   <p class="pull-right">
     <small><%= link_to "[Edit this post]", edit_post_path(@post) %></small>
   </p>
@@ -12,7 +12,7 @@
 
 <div class="well">
     <p><%= @post.description %></p>
-    <small>Posted by: <%= @post.creator.username %> at <%= @post.created_at %></small>
+    <small>Posted by: <%= link_to @post.creator.username, user_path(@post.creator) %></small>
 </div>
 
 <% if logged_in? %>
@@ -33,13 +33,8 @@
 
 <hr />
 
-<h4>Comments:</h4>
-
 <% @post.comments.each do |comment| %>
-  <div class="well">
-    <p><%= "'#{comment.body}'" %></p>
-    <p> Posted by: <%= link_to "#{comment.creator.username}", "#" %> <small> <%= "#{date_format_fixer(comment.created_at)}" %> </small> </p>
-  </div>
+<%= render 'comment', comment: comment %>
 <% end %>
 
 <hr />

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update] #:destroy not included for now.
   before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update]
 
   def index
     @posts = Post.all
@@ -51,5 +52,12 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def require_same_user
+    unless current_user == @post.creator
+      flash[:error] = "You don't have permission to perform that action"
+      redirect_to root_path
+    end
   end
 end

@@ -1,0 +1,9 @@
+<% show_title ||= false %>
+
+<div class="well">
+  <% if show_title %>
+    <p>Post Title: <%= link_to comment.post.title, post_path(comment.post) %></p>
+  <% end %>
+  <p><%= "'#{comment.body}'" %></p>
+  <p> Posted by: <%= link_to "#{comment.creator.username}", user_path(comment.creator) %> <small> <%= "#{date_format_fixer(comment.created_at)}" %> </small> </p>
+</div>

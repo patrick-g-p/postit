@@ -1,0 +1,18 @@
+<% if @user.errors.any? %>
+<%= render 'shared/error_message', object: @user %>
+<% end %>
+
+<div class="well">
+  <%= form_for @user do |f|%>
+  <div class="control-group">
+    <%= f.label :username, "Username" %>
+    <%= f.text_field :username %>
+  </div>
+  <div class="control-group">
+    <%= f.label :password, "Password (7 character minimum)" %>
+    <%= f.password_field :password %>
+  </div>
+  </div>
+  <%= f.submit @user.new_record? ? "Register Account" : "Update Account" , class: "btn btn-success" %>
+  <% end %>
+</div>
