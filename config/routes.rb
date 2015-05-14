@@ -11,4 +11,5 @@ PostitTemplate::Application.routes.draw do
   end
 
   resources :categories, only: [:new, :create, :show]
+  resources :users, except: [:index, :destroy]
 end

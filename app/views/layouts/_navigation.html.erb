@@ -12,6 +12,9 @@
   </div>
 <% else %>
   <div class="nav_item">
+    <%= link_to "Register", register_path, class: "btn btn-info btn-small"%>
+  </div>
+  <div class="nav_item">
     <%= link_to "Log In", login_path, class: "btn btn-success btn-small"%>
   </div>
 <% end %>
