@@ -21,6 +21,6 @@
       <%= box.label(class:"checkbox inline") {box.check_box(class:"checkbox") + box.text} %>
     <% end %>
   </div>
-  <%= f.submit "Create Post", class: "btn btn-success" %>
+  <%= f.submit @post.new_record? ? "Create Post" : "Update Post" , class: "btn btn-success" %>
   <% end %>
 </div>

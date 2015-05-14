@@ -1,6 +1,8 @@
-<p class="pull-right">
-  <small><%= link_to "[Edit this post]", edit_post_path(@post) %></small>
-</p>
+<% if logged_in? && current_user.id == @post.user_id %>
+  <p class="pull-right">
+    <small><%= link_to "[Edit this post]", edit_post_path(@post) %></small>
+  </p>
+<% end %>
 
 <p>
   <%= render @post.categories %>
@@ -13,19 +15,21 @@
     <small>Posted by: <%= @post.creator.username %> at <%= @post.created_at %></small>
 </div>
 
-<div class="well">
-  <% if @comment.errors.any? %>
-    <%= render "shared/error_message", object: @comment %>
-  <% end %>
+<% if logged_in? %>
+  <div class="well">
+    <% if @comment.errors.any? %>
+      <%= render "shared/error_message", object: @comment %>
+    <% end %>
 
-  <%= form_for [@post, @comment] do |f|%>
-  <div class="control-group">
-    <%= f.label :body, "Leave a comment" %>
-    <%= f.text_area :body, rows: 3 %>
+    <%= form_for [@post, @comment] do |f|%>
+    <div class="control-group">
+      <%= f.label :body, "Leave a comment" %>
+      <%= f.text_area :body, rows: 3 %>
+    </div>
+    <%= f.submit "Create Comment", class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <%= f.submit "Create Comment", class: "btn btn-primary" %>
-  <% end %>
-</div>
+<% end %>
 
 <hr />
 
