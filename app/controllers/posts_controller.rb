@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :require_same_user, only: [:edit, :update]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.sort_by{|post| post.total_number_of_votes}.reverse
   end
 
   def show

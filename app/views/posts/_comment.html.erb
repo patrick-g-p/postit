@@ -1,18 +1,20 @@
 <% show_title ||= false %>
-<div class="span0 well text-center" style="clear: left;">
-  <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post' do %>
-    <i class="icon-arrow-up"></i>
-  <% end %>
-  <p><%= "Total Votes" %></p>
-  <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post' do %>
-    <i class="icon-arrow-down"></i>
-  <% end %>
-</div>
+<div class="row">
+  <div class="span0 well text-center">
+    <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post' do %>
+      <i class="icon-arrow-up"></i>
+    <% end %>
+    <p><%= comment.total_number_of_votes %></p>
+    <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post' do %>
+      <i class="icon-arrow-down"></i>
+    <% end %>
+  </div>
 
-<div class="span8 well">
-  <% if show_title %>
-    <p>Post Title: <%= link_to comment.post.title, post_path(comment.post) %></p>
-  <% end %>
-  <p><%= "'#{comment.body}'" %></p>
-  <p> Posted by: <%= link_to "#{comment.creator.username}", user_path(comment.creator) %> <small> <%= "#{date_format_fixer(comment.created_at)}" %> </small> </p>
+  <div class="span8 well">
+    <% if show_title %>
+      <p>Post Title: <%= link_to comment.post.title, post_path(comment.post) %></p>
+    <% end %>
+    <p><%= "'#{comment.body}'" %></p>
+    <p> Posted by: <%= link_to "#{comment.creator.username}", user_path(comment.creator) %> <small> <%= "#{date_format_fixer(comment.created_at)}" %> </small> </p>
+  </div>
 </div>

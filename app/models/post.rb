@@ -9,4 +9,16 @@ class Post < ActiveRecord::Base
   validates :url, presence: true, uniqueness: true
   validates :description, presence: true
   validates :category_ids, presence: true
+
+  def total_number_of_votes
+    self.upvotes - self.downvotes
+  end
+
+  def upvotes
+    self.votes.where(vote: true).size
+  end
+
+  def downvotes
+    self.votes.where(vote: false).size
+  end
 end
