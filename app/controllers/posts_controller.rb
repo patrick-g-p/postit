@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update] #:destroy not included for now.
+  before_action :set_post, only: [:show, :edit, :update, :vote] #:destroy not included for now.
   before_action :require_user, except: [:index, :show]
   before_action :require_same_user, only: [:edit, :update]
 
@@ -43,6 +43,18 @@ class PostsController < ApplicationController
   #
   #   redirect_to post_path
   # end
+
+  def vote
+    @vote = Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
+
+    if @vote.valid?
+      flash[:notice] = "Your vote was successfully submitted"
+    else
+      flash[:error] = "Only one vote per post/comment"
+    end
+
+    redirect_to :back
+  end
 
   private
 

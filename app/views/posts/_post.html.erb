@@ -1,4 +1,13 @@
 <div class="row">
+  <div class="span0 well text-center">
+    <%= link_to vote_post_path(post, vote: true), method: 'post' do %>
+      <i class="icon-arrow-up"></i>
+    <% end %>
+    <p><%= "Total Votes" %></p>
+    <%= link_to vote_post_path(post, vote: false), method: 'post' do %>
+      <i class="icon-arrow-down"></i>
+    <% end %>
+  </div>
   <div class="span8 well">
     <%= render post.categories %>
     <h3><%= link_to post.title, url_fixer(post.url) %></h3>
