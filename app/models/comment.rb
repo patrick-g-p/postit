@@ -3,6 +3,5 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   has_many :votes, as: :voteable
 
-  validates :body, presence: true
-  validates :body, length: {maximum: 140}
+  validates :body, presence: true, allow_blank: false
 end

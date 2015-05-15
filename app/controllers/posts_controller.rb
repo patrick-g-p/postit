@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     if @vote.valid?
       flash[:notice] = "Your vote was successfully submitted"
     else
-      flash[:error] = "Only one vote per post/comment"
+      flash[:error] = "Only one vote per post"
     end
 
     redirect_to :back
