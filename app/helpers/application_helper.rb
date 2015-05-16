@@ -1,6 +1,6 @@
 module ApplicationHelper
   def url_fixer(url)
-    if url.starts_with?("http://")
+    if url.starts_with?("http://") || url.starts_with?("https://")
       url
     else
       "http://#{url}"
