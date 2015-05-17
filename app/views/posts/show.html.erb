@@ -34,6 +34,6 @@
 <hr />
 
 <h4>Comments:</h4>
-<% @post.comments.each do |comment| %>
+<% @post.reload.comments.each do |comment| %>
   <%= render 'comment', comment: comment %>
 <% end %>
