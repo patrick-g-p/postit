@@ -1,15 +1,16 @@
 <% show_title ||= false %>
 <div class="row">
-  <div class="span0 well text-center">
+  <div class="span1 well text-center">
     <% if logged_in? %>
-      <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post' do %>
-        <i class="icon-arrow-up"></i>
+      <%= link_to vote_post_comment_path(comment.post, comment, vote: true), method: 'post', remote: true do %>
+        <i class="icon-arrow-up" id="comment_<%= comment.id %>_up_arrow"></i>
       <% end %>
     <% end %>
-    <p>Votes: <%= comment.total_number_of_votes %></p>
+    <p id='comment_<%= comment.id %>_votes'>Votes: <%= comment.total_number_of_votes %></p>
+    <p id='vote_confirm'></p>
     <% if logged_in? %>
-      <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post' do %>
-        <i class="icon-arrow-down"></i>
+      <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post', remote: true do %>
+        <i class="icon-arrow-down" id="comment_<%= comment.id %>_down_arrow"></i>
       <% end %>
     <% end %>
   </div>

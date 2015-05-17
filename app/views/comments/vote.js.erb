@@ -1,0 +1,7 @@
+<% if @vote.valid? %>
+  $('#comment_<%= @comment.id %>_votes').html('Votes: <%= @comment.total_number_of_votes %>')
+<% else %>
+  $('#comment_<%= @comment.id %>_up_arrow').removeClass('icon-arrow-up')
+  $('#comment_<%= @comment.id %>_down_arrow').removeClass('icon-arrow-down')
+  $('#vote_confirm').html('You can only vote on a comment once.')
+<% end %>

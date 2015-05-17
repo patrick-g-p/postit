@@ -1,4 +1,7 @@
-$('#post_<%= @post.id %>_votes').html('Votes: <%= @post.total_number_of_votes %>')
-$('#vote_confirm').html('Vote submitted.')
-$('#post_<%= @post.id %>_up_arrow').removeClass('icon-arrow-up')
-$('#post_<%= @post.id %>_down_arrow').removeClass('icon-arrow-down')
+<% if @vote.valid? %>
+  $('#post_<%= @post.id %>_votes').html('Votes: <%= @post.total_number_of_votes %>')
+<% else %>
+  $('#post_<%= @post.id %>_up_arrow').removeClass('icon-arrow-up')
+  $('#post_<%= @post.id %>_down_arrow').removeClass('icon-arrow-down')
+  $('#vote_confirm').html('You can only vote on a post once.')
+<% end %>
