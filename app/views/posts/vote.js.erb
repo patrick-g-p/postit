@@ -1,7 +1,7 @@
 <% if @vote.valid? %>
-  $('#post_<%= @post.id %>_votes').html('Votes: <%= @post.total_number_of_votes %>')
+  $('#post_<%= @post.slug %>_votes').html('Votes: <%= @post.total_number_of_votes %>')
 <% else %>
-  $('#post_<%= @post.id %>_up_arrow').removeClass('icon-arrow-up')
-  $('#post_<%= @post.id %>_down_arrow').removeClass('icon-arrow-down')
-  $('#vote_confirm').html('You can only vote on a post once.')
+  $('#post_<%= @post.slug %>_up_arrow').removeClass('icon-arrow-up')
+  $('#post_<%= @post.slug %>_down_arrow').removeClass('icon-arrow-down')
+  $('#vote_error').html('You can only vote on a post once.')
 <% end %>

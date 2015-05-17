@@ -2,14 +2,14 @@
   <div class="span1 well text-center">
     <% if logged_in? %>
       <%= link_to vote_post_path(post, vote: true), method: 'post', remote: true do %>
-        <i class="icon-arrow-up" id="post_<%= post.id %>_up_arrow"></i>
+        <i class="icon-arrow-up" id="post_<%= post.slug %>_up_arrow"></i>
       <% end %>
     <% end %>
-    <p id='post_<%= post.id %>_votes'>Votes: <%= post.total_number_of_votes %></p>
-    <p id='vote_confirm'></p>
+    <p id='post_<%= post.slug %>_votes'>Votes: <%= post.total_number_of_votes %></p>
+    <small id='vote_error'></small>
     <% if logged_in? %>
       <%= link_to vote_post_path(post, vote: false), method: 'post', remote: true do %>
-        <i class="icon-arrow-down" id="post_<%= post.id %>_down_arrow"></i>
+        <i class="icon-arrow-down" id="post_<%= post.slug %>_down_arrow"></i>
       <% end %>
     <% end %>
   </div>
