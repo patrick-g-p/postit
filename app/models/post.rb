@@ -1,9 +1,10 @@
 class Post < ActiveRecord::Base
+  include Voteable
+
   belongs_to :creator, foreign_key: "user_id", class_name: "User"
   has_many :comments
   has_many :post_categories
   has_many :categories, through: :post_categories
-  has_many :votes, as: :voteable
 
   validates :title, presence: true, length: {minimum: 5}
   validates :url, presence: true, uniqueness: true
@@ -11,18 +12,6 @@ class Post < ActiveRecord::Base
   validates :category_ids, presence: true
 
   before_save :generate_slug!
-
-  def total_number_of_votes
-    self.upvotes - self.downvotes
-  end
-
-  def upvotes
-    self.votes.where(vote: true).size
-  end
-
-  def downvotes
-    self.votes.where(vote: false).size
-  end
 
   def generate_slug!
     the_slug = to_slug(self.title)
