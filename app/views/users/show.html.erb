@@ -17,9 +17,9 @@
 </ul>
 
 <% if params[:tab].nil? %>
-<% @user.comments.each do |comment| %>
-  <%= render 'posts/comment', comment: comment, show_title: true %>
-<% end %>
+  <% @user.comments.each do |comment| %>
+    <%= render 'posts/comment', comment: comment, show_title: true %>
+  <% end %>
 <% elsif params[:tab] == 'posts' %>
   <ol>
   <% @user.posts.each do |post| %>
