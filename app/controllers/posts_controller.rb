@@ -72,9 +72,8 @@ class PostsController < ApplicationController
   end
 
   def require_same_user_or_admin
-    unless logged_in? && current_user == @post.creator || current_user.admin?
-      flash[:error] = "You don't have permission to perform that action"
-      redirect_to root_path
+    unless (logged_in? && (current_user == @post.creator || current_user.admin?))
+      no_access
     end
   end
 end

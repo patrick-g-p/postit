@@ -12,6 +12,10 @@
       <%= f.label :password, "Password (7 character minimum)" %>
       <%= f.password_field :password %>
     </div>
+    <div class="control-group">
+      <%= f.label :time_zone %>
+      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, default: Time.zone.name %>
+    </div>
     <%= f.submit @user.new_record? ? "Register Account" : "Update Account" , class: "btn btn-success" %>
   <% end %>
 </div>

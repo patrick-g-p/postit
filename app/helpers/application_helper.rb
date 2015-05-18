@@ -8,6 +8,10 @@ module ApplicationHelper
   end
 
   def date_format_fixer(date)
+    if logged_in? && !current_user.time_zone.blank?
+      date = date.in_time_zone(current_user.time_zone)
+    end
+
     date.strftime(format="on %m/%d/%Y at %l:%M%P %Z")
   end
 end
