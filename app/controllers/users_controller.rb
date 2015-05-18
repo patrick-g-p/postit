@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    unless current_user == @user
+    unless logged_in? && current_user == @user
       flash[:error] = "You don't have permission to perform that action"
       redirect_to root_path
     end

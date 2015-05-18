@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :vote] #:destroy not included for now.
   before_action :require_user, except: [:index, :show]
-  before_action :require_same_user, only: [:edit, :update]
+  before_action :require_same_user_or_admin, only: [:edit, :update]
 
   def index
     @posts = Post.all.sort_by{|post| post.total_number_of_votes}.reverse
@@ -71,8 +71,8 @@ class PostsController < ApplicationController
     @post = Post.find_by(slug: params[:id])
   end
 
-  def require_same_user
-    unless current_user == @post.creator
+  def require_same_user_or_admin
+    unless logged_in? && current_user == @post.creator || current_user.admin?
       flash[:error] = "You don't have permission to perform that action"
       redirect_to root_path
     end
