@@ -72,7 +72,7 @@ class PostsController < ApplicationController
   end
 
   def require_same_user_or_admin
-    unless (logged_in? && (current_user == @post.creator || current_user.admin?))
+    unless logged_in? && (current_user == @post.creator || current_user.admin?)
       no_access
     end
   end

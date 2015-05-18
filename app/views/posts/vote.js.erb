@@ -3,5 +3,5 @@
 <% else %>
   $('#post_<%= @post.slug %>_up_arrow').removeClass('icon-arrow-up')
   $('#post_<%= @post.slug %>_down_arrow').removeClass('icon-arrow-down')
-  $('#vote_error').html('You can only vote on a post once.')
+  $('#post_<%= @post.slug %>_error').html('You can only vote on a post once.')
 <% end %>

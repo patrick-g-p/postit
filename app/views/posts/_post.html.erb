@@ -6,7 +6,7 @@
       <% end %>
     <% end %>
     <p id='post_<%= post.slug %>_votes'>Votes: <%= post.total_number_of_votes %></p>
-    <small id='vote_error'></small>
+    <small id='post_<%= post.slug %>_error'></small>
     <% if logged_in? %>
       <%= link_to vote_post_path(post, vote: false), method: 'post', remote: true do %>
         <i class="icon-arrow-down" id="post_<%= post.slug %>_down_arrow"></i>

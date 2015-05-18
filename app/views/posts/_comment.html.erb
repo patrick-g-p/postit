@@ -7,7 +7,7 @@
       <% end %>
     <% end %>
     <p id='comment_<%= comment.id %>_votes'>Votes: <%= comment.total_number_of_votes %></p>
-    <small id='vote_error'></small>
+    <small id='comment_<%= comment.id %>_error'></small>
     <% if logged_in? %>
       <%= link_to vote_post_comment_path(comment.post, comment, vote: false), method: 'post', remote: true do %>
         <i class="icon-arrow-down" id="comment_<%= comment.id %>_down_arrow"></i>
